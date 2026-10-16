@@ -7,6 +7,13 @@ productName: Draw2Quote
 directories:
   app: ..
   output: dist
+  buildResources: build
+
+# El package.json raíz no declara Electron (para que la versión web no lo
+# descargue), así que la versión se fija aquí.
+electronVersion: 33.4.11
+icon: build/icon.png
+artifactName: ${productName}-${version}-${os}-${arch}.${ext}
 
 # Solo lo necesario en el paquete: el proceso principal, el servidor, el
 # frontend compilado y las dependencias de producción de la raíz.
@@ -18,11 +25,19 @@ files:
   - package.json
   - node_modules/**/*
 
+# Windows: instalador NSIS + .exe portable (sin instalar, doble clic y listo).
 win:
-  target: nsis
+  target:
+    - target: nsis
+      arch: [x64]
+    - target: portable
+      arch: [x64]
 nsis:
   oneClick: true
   perMachine: false
+  artifactName: ${productName}-Setup-${version}.${ext}
+portable:
+  artifactName: ${productName}-${version}-portable.${ext}
 
 linux:
   target: AppImage

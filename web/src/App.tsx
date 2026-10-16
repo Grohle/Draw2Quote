@@ -13,12 +13,9 @@ import { Calibracion } from './components/Calibracion';
 import { Campos } from './components/Campos';
 import { Dropzone, type ArchivoPlano } from './components/Dropzone';
 import {
-  BanderaEN,
-  BanderaES,
   IconoAjustes,
   IconoAviso,
   IconoCampos,
-  IconoDesplegar,
   IconoListado,
   IconoPrecision,
   IconoTarifas,
@@ -49,8 +46,6 @@ const IDIOMAS: { id: Idioma; etiqueta: string; codigo: string }[] = [
   { id: 'es', etiqueta: 'Español', codigo: 'ES' },
   { id: 'en', etiqueta: 'English', codigo: 'EN' },
 ];
-
-const banderaDe = (id: Idioma) => (id === 'es' ? <BanderaES /> : <BanderaEN />);
 
 export default function App() {
   // Cola de planos: cada archivo subido es una pieza; la IA las analiza en orden.
@@ -430,62 +425,65 @@ export default function App() {
   return (
     <div className="app">
       <header className="cabecera">
-        <h1>
-          Draw2<span>Quote</span>
-        </h1>
-        <p className="cabecera__lema">{t.app.lema}</p>
-        <div className="cabecera__derecha">
-          {sinCredenciales ? (
-            <span className="cabecera__demo">{t.app.modoDemo}</span>
-          ) : (
-            <span className="cabecera__proveedor" title={nombreProveedor}>
-              {nombreProveedor.split(' (')[0]}
-            </span>
-          )}
-          <div className="menu-idioma">
-            <button className="btn btn--toggle" title={t.app.tituloIdioma} aria-label={t.app.tituloIdioma} aria-haspopup="menu">
-              {banderaDe(idioma)} {IDIOMAS.find((l) => l.id === idioma)?.codigo}
-              <IconoDesplegar tamano={13} />
-            </button>
-            <div className="menu-idioma__panel" role="menu">
-              {IDIOMAS.map((l) => (
-                <button
-                  key={l.id}
-                  type="button"
-                  role="menuitemradio"
-                  aria-checked={l.id === idioma}
-                  className={`menu-idioma__item ${l.id === idioma ? 'menu-idioma__item--activo' : ''}`}
-                  onClick={() => cambiarIdioma(l.id)}
-                >
-                  {banderaDe(l.id)} {l.etiqueta}
-                </button>
-              ))}
-            </div>
+        <div className="cabecera__barra">
+          <span className="cabecera__marca">Draw2Quote</span>
+          <span className="cabecera__dwg">DATA + AI · DWG Nº D2Q-001</span>
+          <div className="cabecera__idiomas" role="group" aria-label={t.app.tituloIdioma}>
+            {IDIOMAS.map((l) => (
+              <button
+                key={l.id}
+                type="button"
+                title={l.etiqueta}
+                aria-pressed={l.id === idioma}
+                className={`btn-idioma ${l.id === idioma ? 'btn-idioma--activo' : ''}`}
+                onClick={() => cambiarIdioma(l.id)}
+              >
+                {l.codigo}
+              </button>
+            ))}
           </div>
-          <button className="btn btn--toggle" title={t.app.tituloUnidades} aria-label={t.app.tituloUnidades} onClick={() => cambiarUnidades(unidades === 'metrico' ? 'imperial' : 'metrico')}>
-            <IconoUnidades /> {unidades === 'metrico' ? 'mm' : 'in'}
-          </button>
-          <button className="btn btn--ajustes" title={t.app.tituloTarifas} aria-label={t.app.tituloTarifas} onClick={() => setTarifasAbiertas(true)}>
-            <IconoTarifas />
-            {t.app.botonTarifas}
-          </button>
-          <button className="btn btn--ajustes" title={t.app.tituloPrecision} aria-label={t.app.tituloPrecision} onClick={() => setCalibracionAbierta(true)}>
-            <IconoPrecision />
-            {t.app.botonPrecision}
-          </button>
-          <button className="btn btn--ajustes" title={t.app.tituloCampos} aria-label={t.app.tituloCampos} onClick={() => setCamposAbiertos(true)}>
-            <IconoCampos />
-            {t.app.botonCampos}
-          </button>
-          <button className="btn btn--ajustes" title={t.app.tituloListado} aria-label={t.app.tituloListado} onClick={() => setListadoAbierto(true)}>
-            <IconoListado />
-            {t.app.botonListado}
-            {listado.length > 0 && <span className="btn__contador">{listado.length}</span>}
-          </button>
-          <button className="btn btn--ajustes" title={t.app.tituloAjustes} aria-label={t.app.tituloAjustes} onClick={() => setAjustesAbiertos(true)}>
-            <IconoAjustes />
-            {t.app.botonAjustes}
-          </button>
+        </div>
+        <div className="cabecera__titulo">
+          <div className="cabecera__marca-grande">
+            <p className="cabecera__meta">
+              v{__APP_VERSION__} ·{' '}
+              {sinCredenciales ? (
+                <span className="cabecera__demo">{t.app.modoDemo}</span>
+              ) : (
+                <span className="cabecera__proveedor" title={nombreProveedor}>
+                  {nombreProveedor.split(' (')[0]}
+                </span>
+              )}
+            </p>
+            <h1>Draw2Quote</h1>
+            <p className="cabecera__lema">{t.app.lema}.</p>
+          </div>
+          <div className="cabecera__derecha">
+            <button className="btn btn--toggle" title={t.app.tituloUnidades} aria-label={t.app.tituloUnidades} onClick={() => cambiarUnidades(unidades === 'metrico' ? 'imperial' : 'metrico')}>
+              <IconoUnidades /> {unidades === 'metrico' ? 'mm' : 'in'}
+            </button>
+            <button className="btn btn--ajustes" title={t.app.tituloTarifas} aria-label={t.app.tituloTarifas} onClick={() => setTarifasAbiertas(true)}>
+              <IconoTarifas />
+              {t.app.botonTarifas}
+            </button>
+            <button className="btn btn--ajustes" title={t.app.tituloPrecision} aria-label={t.app.tituloPrecision} onClick={() => setCalibracionAbierta(true)}>
+              <IconoPrecision />
+              {t.app.botonPrecision}
+            </button>
+            <button className="btn btn--ajustes" title={t.app.tituloCampos} aria-label={t.app.tituloCampos} onClick={() => setCamposAbiertos(true)}>
+              <IconoCampos />
+              {t.app.botonCampos}
+            </button>
+            <button className="btn btn--ajustes" title={t.app.tituloListado} aria-label={t.app.tituloListado} onClick={() => setListadoAbierto(true)}>
+              <IconoListado />
+              {t.app.botonListado}
+              {listado.length > 0 && <span className="btn__contador">{listado.length}</span>}
+            </button>
+            <button className="btn btn--ajustes" title={t.app.tituloAjustes} aria-label={t.app.tituloAjustes} onClick={() => setAjustesAbiertos(true)}>
+              <IconoAjustes />
+              {t.app.botonAjustes}
+            </button>
+          </div>
         </div>
       </header>
 
