@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="64" viewBox="0 0 300 64" role="img" aria-label="Buy me a coffee">
+  <rect x="0" y="0" width="300" height="64" fill="#fbfaf6"/>
+  <rect x="1.5" y="1.5" width="297" height="61" fill="none" stroke="#1c2433" stroke-width="3"/>
+  <rect x="12" y="12" width="40" height="40" fill="#c4401a"/>
+  <g fill="none" stroke="#fbfaf6" stroke-width="2.4" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M22 27 h16 v8 a8 7 0 0 1 -8 7 a8 7 0 0 1 -8 -7 z"/>
+    <path d="M38 29.5 h2.5 a3.4 3.4 0 0 1 0 6.8 h-2.7"/>
+    <path d="M26 23 v-3 M30 23 v-3 M34 23 v-3" stroke-width="1.8"/>
+  </g>
+  <g font-family="'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace" fill="#1c2433">
+    <text x="68" y="29" font-size="17" font-weight="700" letter-spacing="1">BUY ME A COFFEE</text>
+    <text x="68" y="47" font-size="12" letter-spacing="1" fill="#5d6472">SUPPORT DRAW2QUOTE</text>
+  </g>
+</svg>

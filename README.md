@@ -1,10 +1,32 @@
-# Draw2Quote
+<p align="center">
+  <img src="docs/media/banner.svg" width="100%" alt="Draw2Quote — from drawing to quote in seconds">
+</p>
+
+<p align="center">
+  <b>Technical drawing in, structured quote data out — with a confidence level on every field.</b>
+</p>
+
+<p align="center">
+  <a href="https://github.com/Grohle/Draw2Quote/releases/latest"><img src="https://img.shields.io/github/v/release/Grohle/Draw2Quote?color=C4401A&label=release" alt="Latest release"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-GPL--3.0-1C2433" alt="GPL-3.0 licence"></a>
+  <img src="https://img.shields.io/badge/Windows-.exe%20%C2%B7%20portable-1C2433" alt="Windows installer and portable exe">
+  <img src="https://img.shields.io/badge/AI-Claude%20%C2%B7%20Ollama%20%C2%B7%20LM%20Studio%20%C2%B7%20vLLM-2F4F9E" alt="Claude API, Ollama, LM Studio, vLLM">
+  <img src="https://img.shields.io/badge/stack-React%20%C2%B7%20Express%20%C2%B7%20Electron-5D6472" alt="React, Express, Electron">
+</p>
+
+<p align="center">
+  <a href="https://github.com/Grohle/Draw2Quote/releases/latest"><img src="docs/media/download.svg" height="56" alt="Download for Windows"></a>
+  &nbsp;
+  <a href="https://buymeacoffee.com/grohle"><img src="docs/media/donate.svg" height="56" alt="Buy me a coffee"></a>
+</p>
+
+---
 
 **From drawing to quote in seconds.** Drop a technical drawing (PDF or image) and the AI extracts the data you need to quote it: dimensions, thickness, material, grade, finish, quantity, tolerances, bends and holes — all structured and with a confidence level per field to avoid misreadings.
 
-> The repository is currently named `Draw2Cuote`; the product name is **Draw2Quote**.
-
 **All you need to run it is your AI API key** (or a local model with Ollama/LM Studio/vLLM): clone, `npm install`, start it up and configure the provider in Settings. The system's multi-agent design (extractor + reviewer + deterministic rules + learning from usage) is documented in [ARQUITECTURA.md](ARQUITECTURA.md).
+
+![Draw2Quote analysing a sheet metal drawing](docs/media/app.png)
 
 ## How it works
 
