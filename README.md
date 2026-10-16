@@ -108,6 +108,15 @@ The header includes two selectors: **ES/EN** (with the flag of the active langua
 - Rates (Rates) are always managed in metric units (€/kg, €/m) to keep the shop's configuration simple.
 - The chosen language also travels to the server with each analysis: API error messages and the demo mode's sample data are served in the active language.
 
+## Download (Windows)
+
+Grab the latest build from the [Releases page](https://github.com/Grohle/Draw2Quote/releases/latest):
+
+- **`Draw2Quote-Setup-x.y.z.exe`** — installer (per-user, no admin rights needed).
+- **`Draw2Quote-x.y.z-portable.exe`** — portable executable: double-click and run, nothing to install.
+
+The builds are not code-signed, so Windows SmartScreen may warn the first time: *More info → Run anyway*.
+
 ## Getting started
 
 ```bash
@@ -134,13 +143,13 @@ npm install && npm --prefix web install && npm run build
 # build the installer (run ON Windows for the .exe)
 cd desktop
 npm install
-npm run build:win     # → desktop/dist/Draw2Quote Setup 0.1.0.exe (NSIS installer)
+npm run build:win     # → desktop/dist/Draw2Quote-Setup-1.0.0.exe (installer) + Draw2Quote-1.0.0-portable.exe
 
 # test in desktop mode without packaging
 npm run dev
 ```
 
-> The Windows installer (**NSIS .exe**) must be built on Windows (or with Wine). There are also `build:linux` (AppImage) and `build:mac` (DMG) targets. Once installed, the API key is configured in Settings just like on the web.
+> The Windows installer (**NSIS .exe**) must be built on Windows (or with Wine). Pushing a `v*` tag runs the `Release` workflow (`.github/workflows/release.yml`), which builds both `.exe` files on a Windows runner and attaches them to a GitHub release. There are also `build:linux` (AppImage) and `build:mac` (DMG) targets. Once installed, the API key is configured in Settings just like on the web.
 
 ### Configuring the API from the app (multi-provider)
 

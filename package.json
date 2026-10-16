@@ -1,10 +1,16 @@
 {
   "name": "draw2quote",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "description": "Draw2Quote — de plano (PDF/imagen) a datos de presupuesto estructurados con IA",
   "license": "GPL-3.0-or-later",
+  "author": "Berto Miranda",
+  "homepage": "https://github.com/Grohle/Draw2Quote",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Grohle/Draw2Quote.git"
+  },
   "main": "desktop/main.cjs",
   "scripts": {
     "dev": "concurrently -k -n server,web \"npm:dev:server\" \"npm:dev:web\"",
